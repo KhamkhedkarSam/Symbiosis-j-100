@@ -1,0 +1,47 @@
+<p>register works!</p>
+<div class="register-container">
+    <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+      <div>
+        <label for="customerName">Customer Name</label>
+        <input id="customerName" formControlName="customerName" type="text" />
+        <div *ngIf="registrationForm.get('customerName')?.invalid && registrationForm.get('customerName')?.touched">
+          <small class="error-text">Customer Name is required.</small>
+        </div>
+      </div>
+  
+      <div>
+        <label for="email">Email</label>
+        <input id="email" formControlName="email" type="email" />
+        <div *ngIf="registrationForm.get('email')?.invalid && registrationForm.get('email')?.touched">
+          <small class="error-text">Please enter a valid email.</small>
+        </div>
+      </div>
+  
+      <div>
+        <label for="phoneNo">Phone Number</label>
+        <input id="phoneNo" formControlName="phoneNo" type="text" />
+        <div *ngIf="registrationForm.get('phoneNo')?.invalid && registrationForm.get('phoneNo')?.touched">
+          <small class="error-text">Phone number must be 10 digits.</small>
+        </div>
+      </div>
+  
+      <div>
+        <label for="password">Password</label>
+        <input id="password" formControlName="password" type="password" />
+        <div *ngIf="registrationForm.get('password')?.invalid && registrationForm.get('password')?.touched">
+          <small class="error-text">Password is required (minimum 6 characters).</small>
+        </div>
+      </div>
+  
+      <div>
+        <label for="confirmPassword">Confirm Password</label>
+        <input id="confirmPassword" formControlName="confirmPassword" type="password" />
+        <div *ngIf="registrationForm.hasError('mismatch') && registrationForm.get('confirmPassword')?.touched">
+          <small class="error-text">Passwords do not match.</small>
+        </div>
+      </div>
+  
+      <button type="submit" [disabled]="registrationForm.invalid">Register</button>
+    </form>
+  </div>
+ 

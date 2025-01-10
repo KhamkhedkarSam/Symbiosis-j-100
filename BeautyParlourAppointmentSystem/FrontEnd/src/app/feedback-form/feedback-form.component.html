@@ -1,0 +1,24 @@
+<br><br><br>
+<div class="feedback-form">
+    <h2>Feedback Form</h2>
+    
+    <form (ngSubmit)="onSubmit()" #feedbackForm="ngForm">
+      <div>
+        <label for="clientId">Client ID:</label>
+        <input type="text" id="clientId" name="clientId" [(ngModel)]="feedback.clientId" required />
+      </div>
+      
+      <div>
+        <label for="feedbackId">Feedback ID:</label>
+        <input type="text" id="feedbackId" name="feedbackId" [(ngModel)]="feedback.feedbackId" required />
+      </div>
+      
+      <div>
+        <label for="description">Description:</label>
+        <textarea id="description" name="description" [(ngModel)]="feedback.description" required></textarea>
+      </div>
+      
+      <button type="submit" [disabled]="!feedbackForm.form.valid">Submit</button>
+    </form>
+  </div>
+  
